@@ -4,11 +4,10 @@
   "description": "In this project, you will demonstrate proficiency by writing unit tests and production code to satisfy the _Minimum Viable Product_ described below.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nwthomas/testing-ii.git"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --verbose",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/nwthomas/testing-ii/issues"
   },
-  "homepage": "https://github.com/nwthomas/testing-ii#readme"
+  "homepage": "https://github.com/nwthomas/testing-ii#readme",
+  "devDependencies": {
+    "jest-dom": "^3.1.2",
+    "react-testing-library": "^6.0.0"
+  }
 }

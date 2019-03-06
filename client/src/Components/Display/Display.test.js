@@ -6,17 +6,15 @@ import Display from "./Display";
 import { Dashboard } from "../Dashboard";
 
 describe("<Display />", () => {
-  it("should display the count of strikes for an at-bat", () => {
+  it("should display the count of strikes, balls, and outs", () => {
     const { getByTestId, rerender } = render(
-      <Display stateOnProps={{ strikes: 0, balls: 0 }} />
+      <Display stateOnProps={{ strikes: 0, balls: 0, outs: 0 }} />
     );
     const strikes = getByTestId("strikes");
+    const balls = getByTestId("balls");
+    const outs = getByTestId("outs");
     expect(strikes.textContent).toBe("0"); // Testing initial 0 status from stateOnProps
-
-    rerender(<Display stateOnProps={{ strikes: 1 }} />);
-    expect(strikes.textContent).toBe("1"); // Testing update of 1 from stateOnProps
-
-    rerender(<Display stateOnProps={{ strikes: 2 }} />);
-    expect(strikes.textContent).toBe("2"); // Testing update of 2 from stateOnProps
+    expect(balls.textContent).toBe("0");
+    expect(outs.textContent).toBe("0");
   });
 });

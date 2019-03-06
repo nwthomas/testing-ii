@@ -10,7 +10,6 @@ class Dashboard extends React.Component {
   };
   strike = e => {
     e.preventDefault();
-    console.log(this.state);
     if (e.target.name === "Foul" && this.state.strikes === 2) return;
     if (this.state.strikes === 2) {
       this.setState(prevState => ({

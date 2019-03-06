@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
           <button
             onClick={this.strike}
             name="Strike"
-            data-testid="strikes"
+            data-testid="strikeBtn"
             type="button"
           >
             Strike
@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
           <button
             onClick={this.ball}
             name="Ball"
-            data-testid="ball"
+            data-testid="ballBtn"
             type="button"
           >
             Ball
@@ -72,12 +72,17 @@ class Dashboard extends React.Component {
           <button
             onClick={this.strike}
             name="Foul"
-            data-testid="hit"
+            data-testid="foulBtn"
             type="button"
           >
             Foul
           </button>
-          <button onClick={this.hit} name="Hit" type="button">
+          <button
+            onClick={this.hit}
+            name="Hit"
+            data-testid="hitBtn"
+            type="button"
+          >
             Hit
           </button>
         </div>

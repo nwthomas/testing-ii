@@ -13,11 +13,43 @@ describe("<Dashboard />", () => {
     expect(getByText(/foul/i)).toBeInTheDocument();
     expect(getByText(/hit/i)).toBeInTheDocument();
   });
-  // it("should increment the display of number strikes on screen when the button is pressed", () => {
-  //   const mockCallback = jest.fn();
-  //   const { getByTestId } = render(<Dashboard strike={mockCallback} />);
-  //   const strikeButton = getByTestId("strike");
-  //   fireEvent.click(strikeButton);
-  //   expect(mockCallback.mock.calls.length).toEqual(1);
-  // });
+  it("should increment the display of the number of strikes on screen when the strikes button is pressed", () => {
+    const { getByTestId } = render(<Dashboard />);
+    const strikeButton = getByTestId("strikeBtn");
+    fireEvent.click(strikeButton);
+    expect(getByTestId("strikes").textContent).toEqual("1");
+    fireEvent.click(strikeButton);
+    expect(getByTestId("strikes").textContent).toEqual("2");
+    fireEvent.click(strikeButton);
+    expect(getByTestId("strikes").textContent).toEqual("0");
+  });
+  it("should increment the display of the number of balls on screen when the balls button is pressed", () => {
+    const { getByTestId } = render(<Dashboard />);
+    const ballButton = getByTestId("ballBtn");
+    fireEvent.click(ballButton);
+    expect(getByTestId("balls").textContent).toEqual("1");
+    fireEvent.click(ballButton);
+    expect(getByTestId("balls").textContent).toEqual("2");
+    fireEvent.click(ballButton);
+    expect(getByTestId("balls").textContent).toEqual("3");
+    fireEvent.click(ballButton);
+    expect(getByTestId("balls").textContent).toEqual("0");
+  });
+  it("should increment the display of the number of strikes on screen when the foul button is pressed", () => {
+    const { getByTestId } = render(<Dashboard />);
+    const foulButton = getByTestId("foulBtn");
+    fireEvent.click(foulButton);
+    expect(getByTestId("strikes").textContent).toEqual("1");
+    fireEvent.click(foulButton);
+    expect(getByTestId("strikes").textContent).toEqual("2");
+    fireEvent.click(foulButton);
+    expect(getByTestId("strikes").textContent).toEqual("2");
+  });
+  it("should reset the display of the number of strikes and balls on screen when the hit button is pressed", () => {
+    const { getByTestId } = render(<Dashboard />);
+    const hitButton = getByTestId("hitBtn");
+    fireEvent.click(hitButton);
+    expect(getByTestId("strikes").textContent).toEqual("0");
+    expect(getByTestId("balls").textContent).toEqual("0");
+  });
 });

@@ -6,7 +6,37 @@ class Dashboard extends React.Component {
   state = {
     strikes: 0,
     balls: 0,
-    outs: 0
+    outs: 0,
+    firstBase: 0,
+    secondBase: 0,
+    thirdBase: 0,
+    score: 0
+  };
+  bases = () => {
+    if (this.state.firstBase === 0) {
+      this.setState({
+        ...this.state,
+        firstBase: 1
+      });
+    } else if (this.state.secondBase === 0) {
+      this.setState({
+        ...this.state,
+        secondBase: 1
+      });
+    } else if (this.state.thirdBase === 0) {
+      this.setState({
+        ...this.state,
+        thirdBase: 1
+      });
+    } else {
+      this.setState(prevState => ({
+        ...this.state,
+        score: prevState.score + 1,
+        firstBase: 0,
+        secondBase: 0,
+        thirdBase: 0
+      }));
+    }
   };
   strike = e => {
     e.preventDefault();
@@ -27,11 +57,14 @@ class Dashboard extends React.Component {
   ball = e => {
     e.preventDefault();
     if (this.state.balls === 3) {
-      this.setState({
-        ...this.state,
-        balls: 0,
-        strikes: 0
-      });
+      this.setState(
+        {
+          ...this.state,
+          balls: 0,
+          strikes: 0
+        },
+        () => this.bases()
+      );
     } else {
       this.setState(prevState => ({
         ...this.state,
@@ -41,11 +74,14 @@ class Dashboard extends React.Component {
   };
   hit = e => {
     e.preventDefault();
-    this.setState({
-      ...this.state,
-      strikes: 0,
-      balls: 0
-    });
+    this.setState(
+      {
+        ...this.state,
+        strikes: 0,
+        balls: 0
+      },
+      () => this.bases()
+    );
   };
   render() {
     return (
